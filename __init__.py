@@ -1,1 +1,1 @@
-import colormaps
+from . import colormaps
