@@ -86,7 +86,8 @@ cmap_seqm = mpl.colors.LinearSegmentedColormap(
     cdict_mon_blue)
 
 def choose_cmap(limits):
-    lim = np.max(np.abs(np.array(limits)))
+    limits = np.array(limits)
+    lim = np.max(np.abs(limits))
     if limits[0] < 0 and limits[1] > 0:
         # Diverging colormap
         c0 = -lim
