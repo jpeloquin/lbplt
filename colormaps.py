@@ -37,7 +37,7 @@ cdict_div = {'red': ((0, 0, 0.0941),
                       (0.8, 0.2549, 0.2549),
                       (0.9, 0.2118, 0.2118),
                       (1.0, 0.1725, 1.0000))}
-cdict_mon_blue = {'red': ((0, 0, 0.0941),
+cdict_monr_blue = {'red': ((0, 0, 0.0941),
                           (0.2, 0.2745, 0.2745),
                           (0.4, 0.4275, 0.4275),
                           (0.6, 0.6275, 0.6275),
@@ -55,7 +55,7 @@ cdict_mon_blue = {'red': ((0, 0, 0.0941),
                            (0.6, 0.8824, 0.8824),
                            (0.8, 0.9412, 0.9412),
                            (1.0, 0.9608, 0.9608))}
-cdict_mon_blue = matplotlib.cm.revcmap(cdict_mon_blue)
+cdict_mon_blue = matplotlib.cm.revcmap(cdict_monr_blue)
 cdict_mon_orange = {'red': ((0.0, 0.9451, 0.9451),
                             (0.2, 0.9569, 0.9569),
                             (0.4, 0.9725, 0.9725),
@@ -83,7 +83,7 @@ cmap_seqp = mpl.colors.LinearSegmentedColormap(
     cdict_mon_orange)
 cmap_seqm = mpl.colors.LinearSegmentedColormap(
     'lab_seqminus',
-    cdict_mon_blue)
+    cdict_monr_blue)
 
 def choose_cmap(limits):
     limits = np.array(limits)
@@ -102,6 +102,6 @@ def choose_cmap(limits):
         # Sequential, negative
         c0 = -lim
         c1 = 0
-        cmap = cmap_semq
+        cmap = cmap_seqm
     norm = mpl.colors.Normalize(vmin=c0, vmax=c1)
     return cmap, norm
