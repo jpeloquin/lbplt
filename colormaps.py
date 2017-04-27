@@ -37,6 +37,7 @@ cdict_div = {'red': ((0, 0, 0.0941),
                       (0.8, 0.2549, 0.2549),
                       (0.9, 0.2118, 0.2118),
                       (1.0, 0.1725, 1.0000))}
+# Blue to white
 cdict_monr_blue = {'red': ((0, 0, 0.0941),
                           (0.2, 0.2745, 0.2745),
                           (0.4, 0.4275, 0.4275),
@@ -55,8 +56,10 @@ cdict_monr_blue = {'red': ((0, 0, 0.0941),
                            (0.6, 0.8824, 0.8824),
                            (0.8, 0.9412, 0.9412),
                            (1.0, 0.9608, 0.9608))}
-cdict_mon_blue = matplotlib.cm.revcmap(cdict_monr_blue)
-cdict_mon_orange = {'red': ((0.0, 0.9451, 0.9451),
+# White to blue
+cdict_monl_blue = matplotlib.cm.revcmap(cdict_monr_blue)
+# White to orange
+cdict_monl_orange = {'red': ((0.0, 0.9451, 0.9451),
                             (0.2, 0.9569, 0.9569),
                             (0.4, 0.9725, 0.9725),
                             (0.6, 0.8824, 0.8824),
@@ -80,7 +83,7 @@ cmap_div = mpl.colors.LinearSegmentedColormap(
     cdict_div)
 cmap_seqp = mpl.colors.LinearSegmentedColormap(
     'lab_seqplus',
-    cdict_mon_orange)
+    cdict_monl_orange)
 cmap_seqm = mpl.colors.LinearSegmentedColormap(
     'lab_seqminus',
     cdict_monr_blue)
