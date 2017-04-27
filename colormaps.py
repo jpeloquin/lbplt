@@ -90,20 +90,24 @@ cmap_seqm = mpl.colors.LinearSegmentedColormap(
 
 def choose_cmap(limits):
     limits = np.array(limits)
-    lim = np.max(np.abs(limits))
-    if limits[0] < 0 and limits[1] > 0:
+    abslim = np.max(np.abs(limits))
+    if (limits[0] < 0 and limits[1] > 0):
         # Diverging colormap
-        c0 = -lim
-        c1 = lim
+        c0 = -abslim
+        c1 = abslim
         cmap = cmap_div
-    elif np.all(limits > 0):
+    elif np.all(limits == 0):
+        c0 = 0
+        c1 = 0
+        cmap = cmap_div
+    elif np.all(limits >= 0):
         # Sequential, positive
         c0 = 0
-        c1 = lim
+        c1 = limits[1]
         cmap = cmap_seqp
     else:
         # Sequential, negative
-        c0 = -lim
+        c0 = limits[0]
         c1 = 0
         cmap = cmap_seqm
     norm = mpl.colors.Normalize(vmin=c0, vmax=c1)
