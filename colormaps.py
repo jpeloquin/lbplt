@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.cm
 
-n = 256 # desired number of intensity levels
 cdict_div = {'red': ((0, 0, 0.0941),
                      (0.1, 0.2745, 0.2745),
                      (0.2, 0.4275, 0.4275),
