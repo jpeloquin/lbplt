@@ -114,3 +114,20 @@ def choose_cmap(limits):
         cmap = cmap_seqm
     norm = mpl.colors.Normalize(vmin=c0, vmax=c1)
     return cmap, norm
+
+def dichromatic_blend(rgb0, rgb1, n):
+    """Blend two colors with gray in the middle."""
+    rgb_sq_0 = np.array(rgb0)**2.0
+    rgb_sq_1 = np.array(rgb1)**2.0
+    def lightness_sq(rgb_sq):
+        return 0.299*rgb_sq[0] + 0.587*rgb_sq[1] + 0.114*rgb_sq[2]
+    L2 = [lightness_sq(rgb_sq) for rgb_sq in [rgb_sq_0, rgb_sq_1]]
+    L2_mid = np.mean(L2)
+    n_left = n // 2
+    remainder = n % 2
+    w_color = np.abs(np.linspace(-1, 1, n))
+    rgb_sq_mid = np.array([L2_mid]*3)
+    saturated_colors = [rgb_sq_0]*n_left + [rgb_sq_1]*(n-n_left)
+    blended = [w * rgb_sq + (1 - w) * rgb_sq_mid
+               for w, rgb_sq in zip(w_color, saturated_colors)]
+    return [np.sqrt(rgb_sq) for rgb_sq in blended]
