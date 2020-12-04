@@ -58,8 +58,6 @@ cdict_monr_blue = {'red': ((0, 0, 0.0941),
                            (0.6, 0.8824, 0.8824),
                            (0.8, 0.9412, 0.9412),
                            (1.0, 0.9608, 0.9608))}
-# White to blue
-cdict_monl_blue = matplotlib.cm.revcmap(cdict_monr_blue)
 # White to orange
 cdict_monl_orange = {'red': ((0.0, 0.9451, 0.9451),
                             (0.2, 0.9569, 0.9569),
